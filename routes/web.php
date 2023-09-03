@@ -14,9 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('facturas');
 });
 
+Route::get('/convert-xml-to-json', 'XmlToJsonController@showForm')->name('show-xml-to-json-form');
+Route::post('/convert-xml-to-json', 'XmlToJsonController@convertXmlToJson')->name('convert-xml-to-json');
+Route::post('/pdf-download', 'XmlToJsonController@pdfDownload')->name('pdf-download');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
